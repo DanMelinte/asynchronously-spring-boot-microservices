@@ -1,0 +1,40 @@
+services:
+  postgres:
+    container_name: 'postgres'
+    image: 'postgres:13'
+    environment:
+      POSTGRES_USER: myUser
+      POSTGRES_PASSWORD: 2525 #indicate 'password' to request one
+      PGDATA: /data/postgres
+        - 'POSTGRES_HOST_AUTH_METHOD=trust'
+        - 'POSTGRES_DB=java'
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres # Connection in pgAdmin
+    restart: unless-stopped
+
+  pgadmin: #page we go and connect to postgres service from above (create server and in connection indicate username, password from above)
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@gmail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres  # Connection in pgAdmin
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+   postgres:
+   pgadmin:
