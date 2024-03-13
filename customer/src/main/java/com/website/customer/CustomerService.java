@@ -1,21 +1,27 @@
 package com.website.customer;
 
 
+import com.website.customer.exception.ApiRequestNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public record CustomerService(CustomerRepository customerRepository) {
-    public void registerCustomer(CustomerRegistrationRequest request) {
+    //Business CRUD layer (include CRUD,validation,throw exception)
+
+    public void registerCustomer(Customer request) {
+        //email validation
+
         Customer customer = Customer.builder()
-                .firstName(request.firstName())
-                .lastName(request.lastName())
-                .email(request.email())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
                 .build();
-
-        // check email valid
-        // check email is not taken
-
-        // store customer in db
         customerRepository.save(customer);
+    }
+
+    public Customer getCustomer(int id) {
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new ApiRequestNotFoundException("Customer with id=" + id + " was not found"));
     }
 }

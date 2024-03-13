@@ -1,5 +1,6 @@
 package com.website.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,19 +13,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Customers")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_sequence")
     @SequenceGenerator(name = "customer_id_sequence", sequenceName = "customer_id_sequence", allocationSize = 1)
     private Integer id;
 
-    @Column(name = "first_Name")
     private String firstName;
 
-    @Column(name = "last_Name")
     private String lastName;
 
-    @Column(name = "email")
     private String email;
 
     public Integer getId() {
