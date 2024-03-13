@@ -1,4 +1,4 @@
-package com.website.customer;
+package com.website.Entities;
 
 public record CustomerRegistrationRequest(
         String firstName,

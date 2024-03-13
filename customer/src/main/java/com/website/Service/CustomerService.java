@@ -1,7 +1,9 @@
-package com.website.customer;
+package com.website.Service;
 
 
-import com.website.customer.exception.ApiRequestNotFoundException;
+import com.website.Repository.CustomerRepository;
+import com.website.Entities.Customer;
+import com.website.Exceptions.ApiRequestNotFoundException;
 import org.springframework.stereotype.Service;
 
 

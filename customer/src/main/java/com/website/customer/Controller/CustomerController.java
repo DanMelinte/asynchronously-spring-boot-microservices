@@ -1,6 +1,8 @@
-package com.website.customer;
+package com.website.customer.Controller;
 
 
+import com.website.Service.CustomerService;
+import com.website.Entities.Customer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
