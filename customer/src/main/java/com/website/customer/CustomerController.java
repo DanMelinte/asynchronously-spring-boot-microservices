@@ -1,29 +1,27 @@
 package com.website.customer;
 
 
-import com.website.customer.exception_handling.NoSuchCustomerException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/customers")
+@RequestMapping("/api/customers")
 public record CustomerController(CustomerService customerService) {
 
     @PostMapping
-    public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
-        log.info("new customer registration {}", customerRegistrationRequest);
-        customerService.registerCustomer(customerRegistrationRequest);
+    public ResponseEntity<Void> registerCustomer(@RequestBody Customer customer) {
+        log.info("new customer registration {}", customer);
+        customerService.registerCustomer(customer);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable int id) {
-        Customer customer = customerService.customerRepository().getById(id);
-
-        if (customer == null) {
-            System.out.println("==========");
-            throw new NoSuchCustomerException("There is no employee with ID " + id + " in DB");
-        }
-        return customer;
+        log.info("get customer request {}", id);
+        return customerService.getCustomer(id);
     }
+
 }

@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     // contain default CRUD methods
-
-     Customer getById(Integer id) ;
 }
