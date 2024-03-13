@@ -3,6 +3,7 @@ package com.website.customer;
 
 import org.springframework.stereotype.Service;
 
+
 @Service
 public record CustomerService(CustomerRepository customerRepository) {
     public void registerCustomer(CustomerRegistrationRequest request) {
