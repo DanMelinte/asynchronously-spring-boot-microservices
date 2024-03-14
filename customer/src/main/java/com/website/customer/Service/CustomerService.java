@@ -23,12 +23,20 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
                 .build();
         customerRepository.saveAndFlush(customer);
 
+//direct request
+//        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
+//                "http://localhost:8081/api/fraud-check/{customerId}",
+//                FraudCheckResponse.class,
+//                customer.getId()
+//        );
 
+        //eureka handle request
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://localhost:8081/api/fraud-check/{customerId}",
+                "http://FRAUD-SERVICE:8081/api/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId()
         );
+
 
         if(fraudCheckResponse.isFraudster()) {
             throw new IllegalStateException("fraudster");
