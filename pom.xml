@@ -16,8 +16,9 @@
     <modules>
         <module>customer</module>
         <module>fraud</module>
-        <module>eureka-server</module>
         <module>clients-openFeign</module>
+        <module>eureka-server</module>
+        <module>eureka-server</module>
     </modules>
 
 
@@ -49,8 +50,6 @@
                 <type>pom</type>
             </dependency>
         </dependencies>
-
-
     </dependencyManagement>
 
 
@@ -86,10 +85,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
 
