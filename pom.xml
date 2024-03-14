@@ -88,7 +88,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-eureka-server</artifactId>
-            <version>3.0.3</version>
         </dependency>
     </dependencies>
 
