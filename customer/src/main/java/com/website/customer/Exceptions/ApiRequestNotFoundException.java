@@ -1,4 +1,4 @@
-package com.website.Exceptions;
+package com.website.customer.Exceptions;
 
 public class ApiRequestNotFoundException extends RuntimeException{
     public ApiRequestNotFoundException(String message) {
