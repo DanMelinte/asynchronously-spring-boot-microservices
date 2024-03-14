@@ -1,4 +1,4 @@
-package com.website.customer.Service;
+package com.website.customer.Entities;
 
 public record FraudCheckResponse(Boolean isFraudster) {
 

@@ -2,6 +2,7 @@ package com.website.customer.Service;
 
 
 import com.website.customer.Entities.CustomerRegistrationRequest;
+import com.website.customer.Entities.FraudCheckResponse;
 import com.website.customer.Repository.CustomerRepository;
 import com.website.customer.Entities.Customer;
 import com.website.customer.Exceptions.ApiRequestNotFoundException;

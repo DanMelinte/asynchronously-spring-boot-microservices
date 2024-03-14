@@ -31,6 +31,8 @@ management:
   endpoint:
     metrics:
       enabled: true
+
+#eureka
 eureka:
   client:
     service-url:
