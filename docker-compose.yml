@@ -1,4 +1,6 @@
 services:
+
+#should have another db container but need resources (create nested instance)
   postgres:
     container_name: 'postgres'
     image: 'postgres:13'
@@ -15,6 +17,7 @@ services:
     networks:
       - postgres # Connection in pgAdmin
     restart: unless-stopped
+
 
   pgadmin: #page we go and connect to postgres service from above (create server and in connection indicate username, password from above)
     container_name: pgadmin

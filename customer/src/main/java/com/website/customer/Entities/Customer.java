@@ -1,4 +1,4 @@
-package com.website.customer;
+package com.website.customer.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

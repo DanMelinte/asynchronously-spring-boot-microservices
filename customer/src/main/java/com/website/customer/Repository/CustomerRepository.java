@@ -1,5 +1,6 @@
-package com.website.customer;
+package com.website.customer.Repository;
 
+import com.website.customer.Entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
