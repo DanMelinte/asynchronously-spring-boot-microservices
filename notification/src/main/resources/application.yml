@@ -1,18 +1,18 @@
 # application.yml
 server:
-  port: 8081
+  port: 8082
 
 #config
 spring:
   application:
-    name: fraud-service
+    name: notification-service
   datasource:
-    url: jdbc:postgresql://localhost:5433/fraudDB
+    url: jdbc:postgresql://localhost:5433/notificationsDB
     username: ${db.username}
     password: ${db.password}
     driver-class-name: org.postgresql.Driver
   jpa:
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: create-drop
     generate-ddl: true
     show-sql: true
     properties:

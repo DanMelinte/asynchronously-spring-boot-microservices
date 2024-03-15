@@ -1,9 +1,9 @@
 package com.example.Controller;
 
 
+import com.example.Entities.Customer;
 import com.example.Entities.CustomerRegistrationRequest;
 import com.example.Service.CustomerService;
-import com.example.Entities.Customer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public record CustomerController(CustomerService customerService) {
 
     @PostMapping
-    public ResponseEntity<Void> registerCustomer(@RequestBody CustomerRegistrationRequest request) {
-        log.info("new customer registration {}", request);
+    public ResponseEntity<String> registerCustomer(@RequestBody CustomerRegistrationRequest request) {
         customerService.registerCustomer(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        log.info("new customer registration {}", request);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Customer created successfully");
     }
 
     @GetMapping(path = "/{id}")

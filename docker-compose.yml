@@ -3,7 +3,7 @@ services:
 #should have another db container but need resources (create nested instance)
   postgres:
     container_name: 'postgres'
-    image: 'postgres:13'
+    image: 'postgres:latest'
     environment:
       POSTGRES_USER: myUser
       POSTGRES_PASSWORD: 2525 #indicate 'password' to request one
@@ -20,8 +20,8 @@ services:
 
 
   pgadmin: #page we go and connect to postgres service from above (create server and in connection indicate username, password from above)
-    container_name: pgadmin
-    image: dpage/pgadmin4
+    container_name: 'pgadmin'
+    image: 'dpage/pgadmin4:8'
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@gmail.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}

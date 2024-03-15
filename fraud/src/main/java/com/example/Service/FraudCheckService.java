@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public record FraudCheckService(FraudCheckHistoryRepository fraudCheckHistoryRepository) {
+public record FraudCheckService(FraudCheckHistoryRepository fraudCheckHistoryRepository ) {
     public boolean isFraudulentCostumer(Integer customerId) {
-        fraudCheckHistoryRepository.save(
+        FraudCheckHistory fraudCheckHistory = fraudCheckHistoryRepository.save(
                 FraudCheckHistory.builder()
                         .customerId(customerId)
                         .isFraudster(false)
                         .createdTime(LocalDateTime.now())
                         .build()
         );
+        fraudCheckHistoryRepository.saveAndFlush(fraudCheckHistory);
         return false;
     }
 }

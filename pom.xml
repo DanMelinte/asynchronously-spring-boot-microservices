@@ -18,6 +18,7 @@
         <module>fraud</module>
         <module>clients-openFeign</module>
         <module>eureka-server</module>
+        <module>notification</module>
     </modules>
 
 
