@@ -3,8 +3,7 @@
 server:
   port: 8080
 
-zipkin:
-  base-url: http://localhost:9411
+
 
 spring:
   application:
@@ -21,6 +20,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  zipkin:
+    base-url: http://localhost:9411
 
 
 #actuator

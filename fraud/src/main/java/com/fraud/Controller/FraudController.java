@@ -1,7 +1,8 @@
 package com.fraud.Controller;
 
-import com.openFeign.clients.fraud.FraudCheckResponse;
+//import com.openFeign.clients.fraud.FraudCheckResponse;
 import com.fraud.Service.FraudCheckService;
+import com.openFeign.clients.fraud.FraudCheckResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

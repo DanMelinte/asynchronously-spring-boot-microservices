@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.customer</groupId>
     <artifactId>customer</artifactId>
 
     <properties>
@@ -45,7 +45,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.openFeign.clients</groupId>
             <artifactId>clients-openFeign</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

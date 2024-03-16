@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>com.notification</groupId>
     <artifactId>notification</artifactId>
 
     <properties>
@@ -20,7 +20,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.openFeign.clients</groupId>
             <artifactId>clients-openFeign</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
@@ -69,9 +69,6 @@
             <artifactId>AMQP</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-
-
     </dependencies>
 
 </project>
