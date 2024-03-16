@@ -3,10 +3,11 @@ package com.customer.Service;
 
 //import com.example.clients.fraud.FraudClient;
 
-import com.customer.Exceptions.ApiRequestNotFoundException;
-import com.customer.Repository.CustomerRepository;
+import com.amqp.RabbitMQMessageProducer;
 import com.customer.Entities.Customer;
 import com.customer.Entities.CustomerRegistrationRequest;
+import com.customer.Exceptions.ApiRequestNotFoundException;
+import com.customer.Repository.CustomerRepository;
 import com.openFeign.clients.fraud.FraudCheckResponse;
 import com.openFeign.clients.fraud.FraudClient;
 import com.openFeign.clients.notification.NotificationClient;
@@ -19,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 @Slf4j
 public record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient,
-                              NotificationClient notificationClient) {
+                              NotificationClient notificationClient, RabbitMQMessageProducer rabbitMQMessageProducer) {
     //Business CRUD layer (include CRUD,validation,throw exception)
 
     public void registerCustomer(CustomerRegistrationRequest request) {
@@ -50,11 +51,25 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
         log.info("fraud check passed successfully \nfraud-status: {}", false);
 
 
-        notificationClient.sendNotification(new NotificationRequest(
+        NotificationRequest notificationRequest = new NotificationRequest(
                 customer.getId(),
                 customer.getEmail(),
                 String.format("Welcome %s %s", customer.getFirstName(), customer.getLastName())
-        ));
+        );
+
+//Open Feign directly access
+//        notificationClient.sendNotification(
+//                notificationRequest
+//        );
+
+//send to Rabbit Queue
+        rabbitMQMessageProducer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
+        );
+
+
         log.info("notification send successfully");
     }
 
