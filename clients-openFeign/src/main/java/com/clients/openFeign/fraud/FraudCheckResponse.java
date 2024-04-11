@@ -1,4 +1,4 @@
-package com.openFeign.clients.fraud;
+package com.clients.openFeign.fraud;
 
 public record FraudCheckResponse(Boolean isFraudster) {
 

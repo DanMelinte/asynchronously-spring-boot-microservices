@@ -33,3 +33,4 @@ build/
 .vscode/
 /customer/src/main/resources/application.properties
 /eureka-server/src/main/resources/application.properties
+/customer/src/main/resources/credentials.properties

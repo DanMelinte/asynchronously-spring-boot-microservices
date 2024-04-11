@@ -2,7 +2,7 @@ package com.notification.Controller;
 
 import com.notification.Service.NotificationService;
 //import com.example.clients.notification.NotificationResponse;
-import com.openFeign.clients.notification.NotificationRequest;
+import com.clients.openFeign.notification.NotificationRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

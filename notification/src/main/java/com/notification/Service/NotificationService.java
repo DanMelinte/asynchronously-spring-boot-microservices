@@ -2,7 +2,7 @@ package com.notification.Service;
 
 import com.notification.Entities.Notification;
 import com.notification.Repository.NotificationRepository;
-import com.openFeign.clients.notification.NotificationRequest;
+import com.clients.openFeign.notification.NotificationRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

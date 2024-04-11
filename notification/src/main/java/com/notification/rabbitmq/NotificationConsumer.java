@@ -1,7 +1,7 @@
 package com.notification.rabbitmq;
 
 import com.notification.Service.NotificationService;
-import com.openFeign.clients.notification.NotificationRequest;
+import com.clients.openFeign.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

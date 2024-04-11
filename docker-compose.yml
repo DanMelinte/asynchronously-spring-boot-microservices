@@ -4,19 +4,16 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: myUser
-      POSTGRES_PASSWORD: 2525
+      POSTGRES_USER: danm
+      POSTGRES_PASSWORD: 25952
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5433:5432"
+      - "5432:5432"
     networks:
       - postgres
     restart: unless-stopped
-
-
-
 
   pgadmin:
     container_name: pgadmin
@@ -42,7 +39,6 @@ services:
     networks:
       - spring
 
-
   rabbitmq:
     image: rabbitmq:3.9.11-management-alpine
     container_name: rabbitmq
@@ -51,7 +47,7 @@ services:
       - "15672:15672"
 
 #  eureka-server:
-#    image: amigoscode/eureka-server:latest
+#    image: danmelinte/eureka-server:latest
 #    container_name: eureka-server
 #    ports:
 #      - "8761:8761"
@@ -61,9 +57,10 @@ services:
 #      - spring
 #    depends_on:
 #      - zipkin
-#  apigw:
-#    image: amigoscode/apigw:latest
-#    container_name: apigw
+#
+#  apigateway:
+#    image: danmelinte/apigateway:latest
+#    container_name: apigateway
 #    ports:
 #      - "8083:8083"
 #    environment:
@@ -73,48 +70,52 @@ services:
 #    depends_on:
 #      - zipkin
 #      - eureka-server
-#  customer:
-#    image: amigoscode/customer:latest
-#    container_name: customer
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-#      - postgres
-#      - rabbitmq
-#  fraud:
-#    image: amigoscode/fraud:latest
-#    container_name: fraud
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-#      - postgres
-#      - rabbitmq
-#  notification:
-#    image: amigoscode/notification:latest
-#    container_name: notification
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-#      - postgres
-#      - rabbitmq
+
+  customer:
+    image: danmelinte/customer:latest
+    container_name: customer
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+      - rabbitmq
+
+  fraud:
+    image: danmelinte/fraud:latest
+    container_name: fraud
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+      - rabbitmq
+
+  notification:
+    image: danmelinte/notification:latest
+    container_name: notification
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+      - rabbitmq
+
 
 networks:
   postgres:

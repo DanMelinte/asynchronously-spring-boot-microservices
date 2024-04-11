@@ -4,10 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.example</groupId>
+        <groupId>com.microservicesApp</groupId>
         <artifactId>microservices</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+
+    <profiles>
+        <profile>
+            <id>build-docker-image</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <groupId>com.notification</groupId>
     <artifactId>notification</artifactId>
@@ -22,9 +37,10 @@
     </build>
 
 
+
     <dependencies>
         <dependency>
-            <groupId>com.openFeign.clients</groupId>
+            <groupId>com.clients.openFeign</groupId>
             <artifactId>clients-openFeign</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

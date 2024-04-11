@@ -1,0 +1,52 @@
+# application.yml
+server:
+  port: 8082
+
+#config
+spring:
+  application:
+    name: notification-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/notificationsdb
+    username: postKubeUser
+    password: 2595
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  zipkin:
+    base-url: http://zipkin:9411
+  rabbitmq:
+    addresses: rabbitmq:5672  # or delegate=amqp://guest@127.0.0.1:5672/
+
+#actuator
+management:
+  endpoints:
+    web:
+      base-path: /details
+    jmx:
+      exposure:
+        include: metrics,info
+  endpoint:
+    metrics:
+      enabled: true
+
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queue:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key

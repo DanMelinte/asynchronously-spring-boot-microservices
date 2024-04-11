@@ -4,14 +4,14 @@ package com.customer.Service;
 //import com.example.clients.fraud.FraudClient;
 
 import com.amqp.RabbitMQMessageProducer;
+import com.clients.openFeign.fraud.FraudCheckResponse;
+import com.clients.openFeign.fraud.FraudClient;
+import com.clients.openFeign.notification.NotificationClient;
+import com.clients.openFeign.notification.NotificationRequest;
 import com.customer.Entities.Customer;
 import com.customer.Entities.CustomerRegistrationRequest;
 import com.customer.Exceptions.ApiRequestNotFoundException;
 import com.customer.Repository.CustomerRepository;
-import com.openFeign.clients.fraud.FraudCheckResponse;
-import com.openFeign.clients.fraud.FraudClient;
-import com.openFeign.clients.notification.NotificationClient;
-import com.openFeign.clients.notification.NotificationRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
