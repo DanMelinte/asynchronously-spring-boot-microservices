@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer
+  labels:
+    app: customer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer
+  template:
+    metadata:
+      name: customer
+      labels:
+        app: customer
+    spec:
+      containers:
+        - name: customer
+          image: danmelinte/customer:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: k8s
+            - name: SPRING_DATASOURCE_USERNAME
+              value: gUserPost
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: '259525'
+            - name: SPRING_DATASOURCE_URL
+              value: #jdbc:postgresql://34.30.78.168:5432/customerdb
+      restartPolicy: Always

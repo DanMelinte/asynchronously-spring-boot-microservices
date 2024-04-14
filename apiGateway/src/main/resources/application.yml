@@ -10,10 +10,6 @@ spring:
           uri: lb://customer-service
           predicates:
             - Path=/api/customers/**
-        - id: fraud
-          uri: lb://fraud-service
-          predicates:
-            - Path=/api/fraud-check/**
 
 server:
   port: 8083
