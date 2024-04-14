@@ -22,6 +22,8 @@ spring:
     base-url: http://localhost:9411
   rabbitmq:
     addresses: localhost:5672  # or delegate=amqp://guest@127.0.0.1:5672/
+  profiles:
+    active: default
 
 #actuator
 management:
@@ -43,7 +45,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     refresh:
-    enabled: false
+    enabled: true
 
 rabbitmq:
   exchanges:
